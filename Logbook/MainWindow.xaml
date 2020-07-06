@@ -5,11 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Logbook"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowState="Maximized">
-    <Grid>
-        <Menu HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="782">
-            <Button/>
+        Title="Logbook" Height="450" Width="800" WindowState="Maximized">
+    
+
+        <DockPanel>
+        <Menu DockPanel.Dock="Top" Background="#FFF0F0F0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" />
+                <MenuItem Header="_Open" />
+                <MenuItem Header="_Save" />
+                <Separator />
+                <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+            </MenuItem>
+            <MenuItem Header="_View">
+            </MenuItem>
+            <MenuItem Header="_Tools">
+                <MenuItem Header="Fuel consumption calculator" Click="MenuItem_Click" />
+                <MenuItem Header=" " />
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About" Name="AboutMenuItem"  Click="AboutMenuItem_Click" />
+            </MenuItem>
         </Menu>
 
-    </Grid>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem>
+                <TextBlock Name="statusBarText" />
+            </StatusBarItem>
+        </StatusBar>
+            
+        <TextBox AcceptsReturn="True" />
+    </DockPanel>
+
 </Window>

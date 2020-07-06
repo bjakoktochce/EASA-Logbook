@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logbook.Tools;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,24 @@ namespace Logbook
         public MainWindow()
         {
             InitializeComponent();
+            statusBarText.Text = "Ready";
+        }
+
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            AboutWindow aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            FuelConsumptionCalculator fuelConsumptionCalculator = new FuelConsumptionCalculator();
+            fuelConsumptionCalculator.ShowDialog();
         }
     }
 }
