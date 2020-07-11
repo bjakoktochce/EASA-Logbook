@@ -11,9 +11,9 @@
             <ColumnDefinition Width="87*"/>
             <ColumnDefinition Width="109*"/>
         </Grid.ColumnDefinitions>
-        
+
         <Button Content="OK" HorizontalAlignment="Left" Margin="163,365,0,0" VerticalAlignment="Top" Width="75" Click="OKButton_Click" Grid.ColumnSpan="2"/>
-        <Label x:Name="Copyright" Grid.ColumnSpan="2" Content="Copyright (c) Bartosz Boleslaw Jakoktochce" HorizontalAlignment="Left" Height="123" Margin="53,222,0,0" VerticalAlignment="Top" Width="296"/>
+        <Label x:Name="Copyright" Grid.ColumnSpan="2" Content="Copyright (c) Bartosz Boleslaw Jakoktochce" HorizontalAlignment="Left" Height="123" Margin="30,222,22,0" VerticalAlignment="Top" Width="342"/>
 
     </Grid>
 </Window>
