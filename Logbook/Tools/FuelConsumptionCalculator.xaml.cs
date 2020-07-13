@@ -60,11 +60,9 @@ namespace Logbook.Tools
                 fuelNeeded = Convert.ToDouble(TextBoxConsumptionPerHour.Text) * Convert.ToDouble(TextBoxTimeOfFlight.Text) / 60;
 
                 TextBoxFuelNeeded.Text = Convert.ToString(fuelNeeded);
-
             }
            
         }
-
         private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();

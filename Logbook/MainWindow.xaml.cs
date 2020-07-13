@@ -23,6 +23,7 @@ namespace Logbook
     {
         public MainWindow()
         {
+            //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             InitializeComponent();
             statusBarText.Text = "Ready";
         }
@@ -42,6 +43,23 @@ namespace Logbook
         {
             FuelConsumptionCalculator fuelConsumptionCalculator = new FuelConsumptionCalculator();
             fuelConsumptionCalculator.ShowDialog();
+        }
+
+        private void OptionsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            OptionsWindow optionsWindow = new OptionsWindow();
+            optionsWindow.ShowDialog();
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            statusBarText.Text = "Ready";
+        }
+
+        private void LogbookAddNewEntryMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            LogbookAddNewEntryWindow logbookAddNewEntryWindow = new LogbookAddNewEntryWindow();
+            logbookAddNewEntryWindow.ShowDialog();
         }
     }
 }

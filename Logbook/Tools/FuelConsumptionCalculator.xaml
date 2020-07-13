@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Logbook.Tools"
         mc:Ignorable="d"
-        Title="Fuel Consumption Calculator" Height="332.787" Width="543.579" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen">
-    <Grid Margin="0,0,-6,-9" HorizontalAlignment="Left" Width="544" RenderTransformOrigin="0.539,0.505" Height="313" VerticalAlignment="Top">
+        Title="Fuel Consumption Calculator" Height="340" Width="550" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterScreen" Topmost="True">
+    <Grid Margin="0,0,-6,-3" HorizontalAlignment="Left" RenderTransformOrigin="0.539,0.505" VerticalAlignment="Top" Width="550" Height="314">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="315*"/>
-            <ColumnDefinition Width="229*"/>
+            <ColumnDefinition Width="32*"/>
+            <ColumnDefinition Width="23*"/>
         </Grid.ColumnDefinitions>
         <Button x:Name="ButtonClose" Content="Close" HorizontalAlignment="Left" Margin="77,267,0,0" VerticalAlignment="Top" Width="110" Click="ButtonClose_Click" Grid.Column="1" Background="#FFDDDDDD" Height="20" RenderTransformOrigin="-0.215,1.34"/>
         <TextBox x:Name="TextBoxConsumptionPerHour" HorizontalAlignment="Left" Height="23" Margin="184,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" PreviewTextInput="TextBoxConsumptionPerHour_PreviewTextInput"/>
