@@ -8,15 +8,18 @@
         Title="Logbook" Height="450" Width="800" WindowState="Maximized">
 
 
-    <DockPanel>
+    <DockPanel LastChildFill="False">
         <Menu DockPanel.Dock="Top" FontSize="12" Padding="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_New" />
-                <MenuItem Header="_Open" />
-                <MenuItem Header="_Save" />
+                <MenuItem Header="_New" InputGestureText="Ctrl+N" />
+                <MenuItem x:Name="OpenFIleMenuItem" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFIleMenuItem_Click" />
                 <Separator />
-                <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click" />
+                <MenuItem x:Name="SaveFileMenuItem" Header="_Save" InputGestureText="Ctrl+S" />
+                <MenuItem x:Name="SaveAsMenuItem" Header="_Save as.." InputGestureText="Shift+Ctrl+S"  Click="SaveAsMenuItem_Click" IsCheckable="True" />
+                <Separator />
+                <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click"  InputGestureText="Ctrl+X" />
             </MenuItem>
+
             <MenuItem Header="_Edit">
                 <MenuItem Header="_Options" Name = "OptionsMenuItem"  Click="OptionsMenuItem_Click" />
             </MenuItem>
@@ -25,12 +28,17 @@
                 <Separator />
                 <MenuItem Header="_Properties" />
             </MenuItem>
-            <MenuItem Header="_Flight planner">
-                
+            <MenuItem Header="Aircrafts">
+                <MenuItem Header="Add new aircraft" />
+                <MenuItem Header="Edit aircrafts" />
+            </MenuItem>
+            <MenuItem Header="_Pilots">
+                <MenuItem Header="Add new pilot" />
+                <MenuItem Header="Edit pilot" />
             </MenuItem>
             <MenuItem Header="_Tools">
                 <MenuItem Header="Fuel consumption calculator" Click="MenuItem_Click" />
-                <MenuItem Header=" " />
+                <MenuItem Header="Mass and balance" Click="MassAndBalanceMenuItem_Click" />
             </MenuItem>
             <MenuItem Header="_Window">
             </MenuItem>
@@ -44,14 +52,40 @@
                 <TextBlock Name="statusBarText" Foreground="White" />
             </StatusBarItem>
         </StatusBar>
-        <ToolBarTray Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" DockPanel.Dock="Top">
-            <ToolBar HorizontalAlignment="Left" Height="30" VerticalAlignment="Top" Width="332" Background="#FFF0F0F0">
+
+        <ToolBarTray Height="30" VerticalAlignment="Top" DockPanel.Dock="Top">
+            <ToolBar Height="30" VerticalAlignment="Top" Width="332" Background="#FFF0F0F0" HorizontalAlignment="Left">
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
             </ToolBar>
         </ToolBarTray>
-        <DockPanel LastChildFill="False" VerticalAlignment="Top"/>
+
+        <ListView Width="200" DockPanel.Dock="Left" HorizontalAlignment="Left">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <TabControl DockPanel.Dock="Top">
+            <TabItem Header="TabItem">
+                <DataGrid Height="321"/>
+            </TabItem>
+            <TabItem Header="TabItem">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+        </TabControl>
+       
+
+
+
+
+
+
+
     </DockPanel>
 
 </Window>
