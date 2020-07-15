@@ -30,6 +30,20 @@ namespace Logbook
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
+            //string messageBoxText = "Do you really want to exit ?";
+            //string caption = "Logbook";
+            //MessageBoxButton button = MessageBoxButton.OKCancel;
+            //MessageBoxImage icon = MessageBoxImage.Warning;
+            //MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+
+            //switch (result)
+            //{
+            //    case MessageBoxResult.Cancel:
+            //        break;
+            //    case MessageBoxResult.OK:
+            //        this.Close();
+            //        break;
+            //}
             this.Close();
         }
 
@@ -60,6 +74,43 @@ namespace Logbook
         {
             LogbookAddNewEntryWindow logbookAddNewEntryWindow = new LogbookAddNewEntryWindow();
             logbookAddNewEntryWindow.ShowDialog();
+        }
+
+        private void OpenFIleMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.FileName = "Logbook"; 
+            dlg.DefaultExt = ".db"; 
+            dlg.Filter = "Logbook Database file (.db)|*.db"; 
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                // Open document
+                string filename = dlg.FileName;
+            }
+        }
+
+        private void SaveAsMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.SaveFileDialog dlg = new Microsoft.Win32.SaveFileDialog();
+            dlg.FileName = "Logbook";
+            dlg.DefaultExt = ".db"; 
+            dlg.Filter = "Logbook Databse File (.db)|*.db"; 
+
+            Nullable<bool> result = dlg.ShowDialog();
+
+            if (result == true)
+            {
+                string filename = dlg.FileName;
+            }
+        }
+
+        private void MassAndBalanceMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            MassAndBalance massAndBalance = new MassAndBalance();
+            massAndBalance.ShowDialog();
         }
     }
 }
