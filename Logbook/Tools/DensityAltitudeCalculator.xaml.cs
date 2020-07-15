@@ -12,20 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Logbook
+namespace Logbook.Tools
 {
     /// <summary>
-    /// Interaction logic for AboutWindow.xaml
+    /// Interaction logic for DensityAltitudeCalculator.xaml
     /// </summary>
-    public partial class AboutWindow : Window
+    public partial class DensityAltitudeCalculator : Window
     {
-        public AboutWindow()
+        public DensityAltitudeCalculator()
         {
             InitializeComponent();
-            this.Copyright.Content = Globals.COPYRIGHT_INFO;
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

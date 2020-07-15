@@ -67,8 +67,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="ButtonClose" Content="Close" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" Click="ButtonClose_Click" Grid.Column="1" Background="#FFDDDDDD" RenderTransformOrigin="-0.215,1.34" Width="75"/>
-            <Button x:Name="ButtonCalculate" Content="Calculate" Margin="0,0,25,0" VerticalAlignment="Center" Width="75" Click="ButtonCalculate_Click" Height="20" RenderTransformOrigin="0.123,0.431" HorizontalAlignment="Right"/>
+            <Button x:Name="ButtonClose" Content="Close" HorizontalAlignment="Right" Margin="0,0,15,0" VerticalAlignment="Center" Click="ButtonClose_Click" Grid.Column="1" Background="#FFDDDDDD" RenderTransformOrigin="-0.215,1.34" Width="75" Height="22"/>
+            <Button x:Name="ButtonCalculate" Content="Calculate" Margin="0,0,25,0" VerticalAlignment="Center" Width="75" Click="ButtonCalculate_Click" Height="22" RenderTransformOrigin="0.123,0.431" HorizontalAlignment="Right"/>
         </Grid>
 
 

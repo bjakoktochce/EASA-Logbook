@@ -24,7 +24,7 @@
                 <MenuItem Header="_New" InputGestureText="Ctrl+N" />
                 <MenuItem x:Name="OpenFIleMenuItem" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFIleMenuItem_Click" />
                 <Separator />
-                <MenuItem x:Name="SaveFileMenuItem" Header="_Save" InputGestureText="Ctrl+S" />
+                <MenuItem x:Name="SaveFileMenuItem" Header="_Save" InputGestureText="Ctrl+S" Click="SaveFileMenuItem_Click" />
                 <MenuItem x:Name="SaveAsMenuItem" Header="_Save as.." InputGestureText="Shift+Ctrl+S"  Click="SaveAsMenuItem_Click" IsCheckable="True" />
                 <Separator />
                 <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click"  InputGestureText="Ctrl+X" />
@@ -49,6 +49,7 @@
             <MenuItem Header="_Tools">
                 <MenuItem Header="Fuel consumption calculator" Click="MenuItem_Click" />
                 <MenuItem Header="Mass and balance" Click="MassAndBalanceMenuItem_Click" />
+                <MenuItem Header="Density Altitude Calculator" Click="DensityAltitudeCalculatorMenuItem_Click" />
             </MenuItem>
             <MenuItem Header="_Window">
             </MenuItem>
@@ -57,9 +58,12 @@
             </MenuItem>
         </Menu>
 
-        <StatusBar Grid.Column="0" Grid.Row="3" Background="#FF007ACC">
+        <StatusBar x:Name="statusBar" Grid.Column="0" Grid.Row="3" Background="#FF007ACC">
             <StatusBarItem>
                 <TextBlock Name="statusBarText" Foreground="White" />
+            </StatusBarItem>
+            <StatusBarItem>
+                
             </StatusBarItem>
         </StatusBar>
 

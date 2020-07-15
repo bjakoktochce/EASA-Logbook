@@ -103,11 +103,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Globals.cs" />
     <Compile Include="LogbookAddNewEntryWindow.xaml.cs">
       <DependentUpon>LogbookAddNewEntryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\DensityAltitudeCalculator.xaml.cs">
+      <DependentUpon>DensityAltitudeCalculator.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\FuelConsumptionCalculator.xaml.cs">
       <DependentUpon>FuelConsumptionCalculator.xaml</DependentUpon>
@@ -145,6 +149,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Tools\DensityAltitudeCalculator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tools\FuelConsumptionCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

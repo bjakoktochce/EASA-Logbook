@@ -7,12 +7,22 @@
         mc:Ignorable="d"
         Title="Login" Height="200.1" Width="400">
     <Grid>
-        <Button Content="Login" HorizontalAlignment="Left" Margin="226,122,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.316,0.53"/>
-        <Button Content="Exit" HorizontalAlignment="Left" Margin="115,122,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.252,0.407"/>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        
         <Label Content="Username:" HorizontalAlignment="Left" Margin="51,37,0,0" VerticalAlignment="Top"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="51,74,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="23" Margin="145,37,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="194"/>
         <PasswordBox HorizontalAlignment="Left" Margin="145,77,0,0" VerticalAlignment="Top" Width="194" Height="23"/>
 
+        <Button Content="Login" HorizontalAlignment="Right" Margin="0,0,50,0" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.316,0.53" Grid.Row="1" Height="22"/>
+        <Button Content="Exit" HorizontalAlignment="Left" Margin="50,0,0,0" VerticalAlignment="Center" Width="75" RenderTransformOrigin="-0.252,0.407" Grid.Row="1" Grid.Column="1" Height="22"/>
+        
     </Grid>
 </Window>

@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,10 +22,21 @@ namespace Logbook
     /// </summary>
     public partial class MainWindow : Window
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public MainWindow()
         {
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             InitializeComponent();
+            logger.Info("Application initialized");
+
+            this.Title = Globals.APPLICATION_NAME + " " + Globals.APPLICATION_VERSION; ;
+
+            statusBarText.Text = "Ready";
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
             statusBarText.Text = "Ready";
         }
 
@@ -65,11 +77,6 @@ namespace Logbook
             optionsWindow.ShowDialog();
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
-        {
-            statusBarText.Text = "Ready";
-        }
-
         private void LogbookAddNewEntryMenuItem_Click(object sender, RoutedEventArgs e)
         {
             LogbookAddNewEntryWindow logbookAddNewEntryWindow = new LogbookAddNewEntryWindow();
@@ -105,12 +112,25 @@ namespace Logbook
             {
                 string filename = dlg.FileName;
             }
+
+            this.statusBarText.Text = "Item(s) Saved";
         }
 
         private void MassAndBalanceMenuItem_Click(object sender, RoutedEventArgs e)
         {
             MassAndBalance massAndBalance = new MassAndBalance();
             massAndBalance.ShowDialog();
+        }
+
+        private void SaveFileMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            this.statusBarText.Text = "Item(s) Saved";
+        }
+
+        private void DensityAltitudeCalculatorMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            DensityAltitudeCalculator densityAltitudeCalculator = new DensityAltitudeCalculator();
+            densityAltitudeCalculator.ShowDialog();
         }
     }
 }
