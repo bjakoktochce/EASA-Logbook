@@ -53,7 +53,7 @@
             <MenuItem Header="_Window">
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="_About" Name="AboutMenuItem"  Click="AboutMenuItem_Click" />
+                <MenuItem Header="_About Logbook" Name="AboutMenuItem"  Click="AboutMenuItem_Click" />
             </MenuItem>
         </Menu>
 

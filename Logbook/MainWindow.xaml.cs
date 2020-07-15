@@ -30,21 +30,21 @@ namespace Logbook
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            string messageBoxText = "Do you really want to exit ?";
-            string caption = "Logbook";
-            MessageBoxButton button = MessageBoxButton.OKCancel;
-            MessageBoxImage icon = MessageBoxImage.Warning;
-            MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
+            //string messageBoxText = "Do you really want to exit ?";
+            //string caption = "Logbook";
+            //MessageBoxButton button = MessageBoxButton.OKCancel;
+            //MessageBoxImage icon = MessageBoxImage.Warning;
+            //MessageBoxResult result = MessageBox.Show(messageBoxText, caption, button, icon);
 
-            switch (result)
-            {
-                case MessageBoxResult.Cancel:
-                    break;
-                case MessageBoxResult.OK:
-                    this.Close();
-                    break;
-            }
-            //this.Close();
+            //switch (result)
+            //{
+            //    case MessageBoxResult.Cancel:
+            //        break;
+            //    case MessageBoxResult.OK:
+            //        this.Close();
+            //        break;
+            //}
+            this.Close();
         }
 
         private void AboutMenuItem_Click(object sender, RoutedEventArgs e)
