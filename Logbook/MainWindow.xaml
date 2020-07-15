@@ -8,8 +8,18 @@
         Title="Logbook" Height="450" Width="800" WindowState="Maximized">
 
 
-    <DockPanel LastChildFill="False">
-        <Menu DockPanel.Dock="Top" FontSize="12" Padding="0">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="22"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition />
+            <RowDefinition Height="22"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Menu Grid.Row="0" Grid.Column="0" FontSize="12" Padding="2">
             <MenuItem Header="_File">
                 <MenuItem Header="_New" InputGestureText="Ctrl+N" />
                 <MenuItem x:Name="OpenFIleMenuItem" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFIleMenuItem_Click" />
@@ -47,37 +57,53 @@
             </MenuItem>
         </Menu>
 
-        <StatusBar DockPanel.Dock="Bottom" Background="#FF007ACC">
+        <StatusBar Grid.Column="0" Grid.Row="3" Background="#FF007ACC">
             <StatusBarItem>
                 <TextBlock Name="statusBarText" Foreground="White" />
             </StatusBarItem>
         </StatusBar>
 
-        <ToolBarTray Height="30" VerticalAlignment="Top" DockPanel.Dock="Top">
-            <ToolBar Height="30" VerticalAlignment="Top" Width="332" Background="#FFF0F0F0" HorizontalAlignment="Left">
+        <ToolBarTray Height="30" VerticalAlignment="Top" Grid.Row="1">
+            <ToolBar Height="30" Width="332" Background="#FFF0F0F0" HorizontalAlignment="Left">
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
             </ToolBar>
         </ToolBarTray>
 
-        <ListView Width="200" DockPanel.Dock="Left" HorizontalAlignment="Left">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" MinWidth="150"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
+            <ListView Grid.Column="0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
-        <TabControl DockPanel.Dock="Top">
-            <TabItem Header="TabItem">
-                <DataGrid Height="321"/>
-            </TabItem>
-            <TabItem Header="TabItem">
-                <Grid Background="#FFE5E5E5"/>
-            </TabItem>
-        </TabControl>
+            <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Stretch" />
+
+            <TabControl Grid.Column="2">
+                <TabItem Header="TabItem">
+                    <DataGrid/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
+        
+        
+        
        
 
 
@@ -86,6 +112,6 @@
 
 
 
-    </DockPanel>
+    </Grid>
 
 </Window>
