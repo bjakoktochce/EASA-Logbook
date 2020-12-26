@@ -5,12 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:local="clr-namespace:Logbook"
         mc:Ignorable="d"
-        Title="Logbook" Height="450" Width="800" WindowState="Maximized">
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/core"
+              xmlns:dxb="http://schemas.devexpress.com/winfx/2008/xaml/bars"
+        WindowStyle="None"  
+        Title="Logbook" Height="765" Width="1258" WindowState="Maximized">
+
+    <Window.Resources>
+        <Style x:Key="TitleBarCloseButtonStyle" TargetType="Button">
+            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="WindowChrome.IsHitTestVisibleInChrome" Value="True" />
+            <Setter Property="IsTabStop" Value="False" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border
+					x:Name="border"
+					Background="Transparent"
+					BorderThickness="0"
+					SnapsToDevicePixels="true">
+                            <ContentPresenter
+						x:Name="contentPresenter"
+						Margin="0"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Focusable="False"
+						RecognizesAccessKey="True" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource MouseOverWindowCloseButtonBackgroundBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource MouseOverWindowCloseButtonForegroundBrush}" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource PressedWindowCloseButtonBackgroundBrush}" />
+                                <Setter Property="Foreground" Value="{DynamicResource MouseOverWindowCloseButtonForegroundBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="DataGridContentCellCentering" TargetType="{x:Type DataGridCell}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type DataGridCell}">
+                        <Grid Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" />
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
 
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="22"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="30"/>
             <RowDefinition />
             <RowDefinition Height="22"/>
@@ -18,53 +72,96 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        
-        <Menu Grid.Row="0" Grid.Column="0" FontSize="12" Padding="2">
-            <MenuItem Header="_File">
-                <MenuItem Header="_New" InputGestureText="Ctrl+N" />
-                <MenuItem x:Name="OpenFIleMenuItem" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFIleMenuItem_Click" />
-                <Separator />
-                <MenuItem x:Name="SaveFileMenuItem" Header="_Save" InputGestureText="Ctrl+S" />
-                <MenuItem x:Name="SaveAsMenuItem" Header="_Save as.." InputGestureText="Shift+Ctrl+S"  Click="SaveAsMenuItem_Click" IsCheckable="True" />
-                <Separator />
-                <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click"  InputGestureText="Ctrl+X" />
-            </MenuItem>
 
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Options" Name = "OptionsMenuItem"  Click="OptionsMenuItem_Click" />
-            </MenuItem>
-            <MenuItem Header="_Logbook">
-                <MenuItem x:Name="LogbookAddNewEntryMenuItem" Header="_New entry" Click="LogbookAddNewEntryMenuItem_Click" />
-                <Separator />
-                <MenuItem Header="_Properties" />
-            </MenuItem>
-            <MenuItem Header="Aircrafts">
-                <MenuItem Header="Add new aircraft" />
-                <MenuItem Header="Edit aircrafts" />
-            </MenuItem>
-            <MenuItem Header="_Pilots">
-                <MenuItem Header="Add new pilot" />
-                <MenuItem Header="Edit pilot" />
-            </MenuItem>
-            <MenuItem Header="_Tools">
-                <MenuItem Header="Fuel consumption calculator" Click="MenuItem_Click" />
-                <MenuItem Header="Mass and balance" Click="MassAndBalanceMenuItem_Click" />
-            </MenuItem>
-            <MenuItem Header="_Window">
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="_About Logbook" Name="AboutMenuItem"  Click="AboutMenuItem_Click" />
-            </MenuItem>
-        </Menu>
+
+        <Grid Grid.Row="0" Background="#FFF0F0F0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30px"/>
+                <ColumnDefinition Width="400px"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="150px"/>
+            </Grid.ColumnDefinitions>
+
+
+
+            <Image Source="METAR.png" Width="30" Grid.Column="0" HorizontalAlignment="Left" />
+
+
+            <Menu Grid.Row="0" Grid.Column="1" FontSize="12" Padding="5">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" InputGestureText="Ctrl+N" Click="MenuItem_Click_1" />
+                    <MenuItem x:Name="OpenFIleMenuItem" Header="_Open" InputGestureText="Ctrl+O" Click="OpenFIleMenuItem_Click" />
+                    <Separator />
+                    <MenuItem x:Name="SaveFileMenuItem" Header="_Save" InputGestureText="Ctrl+S" />
+                    <MenuItem x:Name="SaveAsMenuItem" Header="_Save as.." InputGestureText="Shift+Ctrl+S"  Click="SaveAsMenuItem_Click" IsCheckable="True" />
+                    <Separator />
+                    <MenuItem Header="_Exit" Name ="ExitMenuItem" Click="ExitMenuItem_Click"  InputGestureText="Ctrl+X" />
+                </MenuItem>
+
+                <MenuItem Header="_Edit">
+                    <MenuItem Header="_Options" Name = "OptionsMenuItem"  Click="OptionsMenuItem_Click" />
+                </MenuItem>
+                <MenuItem Header="_Logbook">
+                    <MenuItem x:Name="LogbookAddNewEntryMenuItem" Header="_New entry" Click="LogbookAddNewEntryMenuItem_Click" />
+                    <Separator />
+                    <MenuItem Header="_Properties" />
+                </MenuItem>
+
+                <MenuItem Header="Aircrafts">
+                    <MenuItem Header="Add new aircraft" />
+                    <MenuItem Header="Edit aircrafts" />
+                </MenuItem>
+
+                <MenuItem Header="_Pilots">
+                    <MenuItem Header="Add new pilot" />
+                    <MenuItem Header="Edit pilot" />
+                </MenuItem>
+
+                <MenuItem Header="_Tools">
+                    <MenuItem Header="Fuel consumption calculator" Click="MenuItem_Click" />
+                    <MenuItem Header="Mass and balance" Click="MassAndBalanceMenuItem_Click" />
+                </MenuItem>
+
+                <MenuItem Header="_Window">
+                </MenuItem>
+
+                <MenuItem Header="_Help">
+                    <MenuItem Header="_About Logbook" Name="AboutMenuItem"  Click="AboutMenuItem_Click" />
+                </MenuItem>
+            </Menu>
+
+            <Viewbox Height="25px"  Margin="0,0,0,0" Grid.Column="2" HorizontalAlignment="Left">
+                <TextBlock Background="DimGray" Height="25px" Foreground="White"  Padding="5">Bartosz Jakoktochce</TextBlock>
+            </Viewbox>
+
+
+            <Button x:Name="CloseButton" Content="X" Grid.Column="3" Width="45"  
+                    HorizontalAlignment="Right" BorderThickness="0" />
+            <Button x:Name="MaximizeButton" Content="X" Grid.Column="3" Width="45" Margin="0,0,45,0"
+                    HorizontalAlignment="Right"  BorderThickness="0" />
+            <Button x:Name="MinimizeButton" Content="X" Grid.Column="3" Width="45" Margin="0,0,90,0"
+                    HorizontalAlignment="Right"  BorderThickness="0" />
+
+
+
+        </Grid>
+
+
+
 
         <StatusBar Grid.Column="0" Grid.Row="3" Background="#FF007ACC">
             <StatusBarItem>
-                <TextBlock Name="statusBarText" Foreground="White" />
+                <TextBlock Name="statusBarText" Foreground="White" Margin="10,0,0,0"/>
             </StatusBarItem>
         </StatusBar>
 
-        <ToolBarTray Height="30" VerticalAlignment="Top" Grid.Row="1">
+        <ToolBarTray Height="30" VerticalAlignment="Top" Grid.Row="1" Background="#FFF0F0F0">
             <ToolBar Height="30" Width="332" Background="#FFF0F0F0" HorizontalAlignment="Left">
+                <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
+                <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
+                <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
+            </ToolBar>
+            <ToolBar Height="30" Width="100" Background="#FFF0F0F0" HorizontalAlignment="Left">
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
                 <Button Content="Button" Height="25" VerticalAlignment="Top" Width="25"/>
@@ -73,7 +170,7 @@
 
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="200" MinWidth="150"/>
+                <ColumnDefinition Width="200" MinWidth="200"/>
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
@@ -92,19 +189,61 @@
             <GridSplitter Grid.Column="1" Width="3" HorizontalAlignment="Stretch" />
 
             <TabControl Grid.Column="2">
-                <TabItem Header="TabItem">
-                    <DataGrid/>
+
+                <TabItem Header="Logbook flights">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="3" />
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <DataGrid x:Name="Imported" VerticalAlignment="Top" DataContext="{Binding Source=list}"  AutoGenerateColumns="False" CanUserResizeColumns="True" HorizontalGridLinesBrush="#FFAFAFAF" VerticalGridLinesBrush="#FFD8D8D8" Grid.Row="0" BorderThickness="0" IsTabStop="True" IsReadOnly="True" >
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="Place of dep." Binding="{Binding Path=PlaceOfDep}"/>
+                                <DataGridTextColumn Header="Time of dep." Binding="{Binding Path=TimeOfDep}"/>
+                                <DataGridTextColumn Header="Place of arr." Binding="{Binding Path=PlaceOfArr}"/>
+                                <DataGridTextColumn Header="Time of arr." Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="Aircraft" Binding="{Binding Path=Aircraft}"/>
+                                <DataGridTextColumn Header="Registration" Binding="{Binding Path=Registration}"/>
+                                <DataGridTextColumn Header="Flight time" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="Name PIC" Binding="{Binding Path=NamePIC}"/>
+                                <DataGridTextColumn Header="TO Day" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="TO Night" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="LAND. Day" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="LAND. Night" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="PILOT PIC" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="PILOT Co-pilot" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="PILOT Dual" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="PILOT Instructor" Binding="{Binding Path=Date}"/>
+                                <DataGridTextColumn Header="Remarks" Binding="{Binding Path=Remarks}"/>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+
+                        <GridSplitter Grid.Row="1" Height="3" />
+
+                        
+                        <Canvas HorizontalAlignment="Left" Height="50" Margin="0,0,0,0" Grid.Row="2" VerticalAlignment="Top" Width="100" Background="Aqua"/>
+
+
+
+                    </Grid>
                 </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
+
+
+                <TabItem Header="Logbook totals">
+
                 </TabItem>
             </TabControl>
 
         </Grid>
-        
-        
-        
-       
+
+
+
+
 
 
 

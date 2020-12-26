@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace Logbook
 {
@@ -26,6 +27,8 @@ namespace Logbook
             //this.MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             InitializeComponent();
             statusBarText.Text = "Ready";
+            //Imported.ItemsSource = LoadCollectionData();
+            Database database = new Database();
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
@@ -89,7 +92,11 @@ namespace Logbook
             {
                 // Open document
                 string filename = dlg.FileName;
+
+                Database.LoadDatabase(filename);
             }
+
+            Imported.ItemsSource = Database.flights;
         }
 
         private void SaveAsMenuItem_Click(object sender, RoutedEventArgs e)
@@ -105,12 +112,24 @@ namespace Logbook
             {
                 string filename = dlg.FileName;
             }
+
+            
         }
 
         private void MassAndBalanceMenuItem_Click(object sender, RoutedEventArgs e)
         {
             MassAndBalance massAndBalance = new MassAndBalance();
             massAndBalance.ShowDialog();
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Database.NewDatabase();
         }
     }
 }
